@@ -22,7 +22,7 @@ import com.bo.Utilisateur;
 import com.bo.WordPolarity;
 
 @Configuration
-@ComponentScan(basePackages = { "com.services", "com.dao", "tourist_web" })
+@ComponentScan(basePackages = { "com.services", "com.dao", "com.web.actions" })
 @EnableTransactionManagement
 @EnableScheduling
 public class AppConfig {
