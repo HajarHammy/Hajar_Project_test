@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.bo.Commentaire;
 import com.bo.Destination;
+import com.bo.Internaute;
 import com.bo.Utilisateur;
 import com.bo.WordPolarity;
 
@@ -57,7 +58,7 @@ public class AppConfig {
 		sessionFactory.setDataSource(getDataSource());
 		sessionFactory.setHibernateProperties(hibernateProperties());
 
-		sessionFactory.setAnnotatedClasses(WordPolarity.class, Destination.class, Commentaire.class, Utilisateur.class, Role.class);
+		sessionFactory.setAnnotatedClasses(WordPolarity.class, Destination.class, Commentaire.class, Utilisateur.class, Role.class, Internaute.class);
 
 		// méthode à tester setAnnotatedPackages("com.bo");
 
