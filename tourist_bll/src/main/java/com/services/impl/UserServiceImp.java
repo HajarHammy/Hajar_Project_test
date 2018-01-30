@@ -2,8 +2,7 @@ package com.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.bo.Internaute;
-import com.bo.Role;
+import com.bo.Role_tourist;
 import com.bo.Utilisateur;
 import com.dao.RoleDao;
 import com.dao.UserDao;
@@ -17,10 +16,10 @@ public class UserServiceImp implements UserService{
 	@Autowired
 	private RoleDao roleDao;
 	
-	public void addUtilisateur(Internaute user) 
+	public void addUtilisateur(Utilisateur user) 
 	{
 
-		for(Role role:roleDao.getAll())
+		for(Role_tourist role:roleDao.getAll())
 		{
 			if(role.getRole().equals("Internaute"))
 			{

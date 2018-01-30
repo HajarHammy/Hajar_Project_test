@@ -8,7 +8,9 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
@@ -18,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.bo.Commentaire;
 import com.bo.Destination;
-import com.bo.Internaute;
+import com.bo.Role_tourist;
 import com.bo.Utilisateur;
 import com.bo.WordPolarity;
 
@@ -58,7 +60,7 @@ public class AppConfig {
 		sessionFactory.setDataSource(getDataSource());
 		sessionFactory.setHibernateProperties(hibernateProperties());
 
-		sessionFactory.setAnnotatedClasses(WordPolarity.class, Destination.class, Commentaire.class, Utilisateur.class, Role.class, Internaute.class);
+		sessionFactory.setAnnotatedClasses(WordPolarity.class, Destination.class, Commentaire.class, Utilisateur.class, Role_tourist.class);
 
 		// méthode à tester setAnnotatedPackages("com.bo");
 

@@ -32,7 +32,7 @@ public class Utilisateur {
   
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="role_fk")
-	private Role role;
+	private Role_tourist role;
     
 	public Long getId() {
 		return id;
@@ -70,10 +70,10 @@ public class Utilisateur {
 	public void setDestinations(List<Destination> destinations) {
 		this.destinations = destinations;
 	}
-	public Role getRole() {
+	public Role_tourist getRole() {
 		return role;
 	}
-	public void setRole(Role role) {
+	public void setRole(Role_tourist role) {
 		this.role = role;
 	}
    
