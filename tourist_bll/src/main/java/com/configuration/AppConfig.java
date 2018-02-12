@@ -24,6 +24,10 @@ import com.bo.Role_tourist;
 import com.bo.Utilisateur;
 import com.bo.WordPolarity;
 
+
+
+
+
 @Configuration
 @ComponentScan(basePackages = { "com.services", "com.dao", "com.web.actions" })
 @EnableTransactionManagement
@@ -74,7 +78,7 @@ public class AppConfig {
 
 		final Properties hibernateProperties = new Properties();
 
-		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create");
+		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
 		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		hibernateProperties.setProperty("hibernate.show_sql", "true");
 

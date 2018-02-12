@@ -1,39 +1,89 @@
 package com.web.actions.admin;
 
+import java.util.List;
+
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Actions;
 import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.ResultPath;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.bo.WordPolarity;
-import com.opensymphony.xwork2.ActionSupport;
-import com.services.SentimentAnalysis;
+import com.bo.Destination;
+import com.services.DestinationService;
+import com.web.actions.BaseAction;
 
-@ResultPath(value = "/pages/")
-public class AdminActions extends ActionSupport {
+
+public class AdminActions extends BaseAction {
 
 	@Autowired
-	private SentimentAnalysis saService;
+	private DestinationService destinationService;
 
-	private WordPolarity wordPolarity;
+	private List<Destination> destinations;
 
-	@Action(value = "/addWord", results = { @Result(name = "success", location = "addWordForm.jsp") })
-	public String addWord() {
+	private Destination destination;
 
-		saService.addWord(wordPolarity);
 
-		addActionMessage("Mot correctement ajouté");
+	@Action(value = "/addDestination", results = { @Result(name = "success", location = "/private/admin/addDestinationForm.jsp") })
+	public String addDestination() {
+
+		destinationService.addDestination(destination);
+
+		addActionMessage("Destination correctement ajoutée");
 
 		return SUCCESS;
 
 	}
 
-	public WordPolarity getWordPolarity() {
-		return wordPolarity;
+	@Actions({
+	@Action(value = "/", results = { @Result(name = "success", location = "/private/admin/listAdminDestinations.jsp") }),
+
+	@Action(value = "/getAllAdminDestinations", results = { @Result(name = "success", location = "/private/admin/listAdminDestinations.jsp") })
+
+	})
+
+	public String getAllAdminDestinationss() {
+
+		destinations = destinationService.getAllDestinations();
+
+		return SUCCESS;
+
+	}
+	
+	@Action(value = "/modify", results = { @Result(name = "success", location = "/private/admin/listAdminDestinations.jsp")
+
+	})
+	public String deleteDestination() {
+		
+		
+		getSession().setAttribute("idDestination", Long.valueOf(getRequest().getParameter("id")));
+
+		// On récupère l'id de la destination
+		
+		Long id = (Long) getSession().getAttribute("idDestination");
+		
+		
+		destinationService.removeDestination( id );
+
+		addActionMessage("Destination correctement supprimée");
+
+		return SUCCESS;
+
+	}
+	
+
+	public List<Destination> getDestinations() {
+		return destinations;
 	}
 
-	public void setWordPolarity(WordPolarity wordPolarity) {
-		this.wordPolarity = wordPolarity;
+	public void setDestinations(List<Destination> destinations) {
+		this.destinations = destinations;
 	}
 
+	public Destination getDestination() {
+		return destination;
+	}
+
+	public void setDestination(Destination destination) {
+		this.destination = destination;
+	}
+	
 }

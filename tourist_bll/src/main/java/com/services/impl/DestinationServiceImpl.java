@@ -36,5 +36,9 @@ public class DestinationServiceImpl implements DestinationService {
 	public Destination getDestinationById(Long id) {
 		return destinationDao.findById(id);
 	}
+	
+	public void removeDestination(Long id) {
+		destinationDao.delete(id);
+	}
 
 }

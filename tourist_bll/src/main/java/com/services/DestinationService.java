@@ -13,5 +13,7 @@ public interface DestinationService {
 	public void updateDestination(Destination destination);
 
 	public Destination getDestinationById(Long id);
+	
+	public void removeDestination(Long id);
 
 }

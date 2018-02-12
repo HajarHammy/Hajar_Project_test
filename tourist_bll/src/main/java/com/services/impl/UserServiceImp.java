@@ -1,6 +1,9 @@
 package com.services.impl;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 
 import com.bo.Role_tourist;
 import com.bo.Utilisateur;
@@ -16,12 +19,15 @@ public class UserServiceImp implements UserService{
 	@Autowired
 	private RoleDao roleDao;
 	
+	protected final Log log = LogFactory.getLog(getClass());
+	
+	
 	public void addUtilisateur(Utilisateur user) 
 	{
 
 		for(Role_tourist role:roleDao.getAll())
 		{
-			if(role.getRole().equals("Internaute"))
+			if(role.getRoleName().equals("Internaute"))
 			{
 				user.setRole(role);
 			}
@@ -40,9 +46,14 @@ public class UserServiceImp implements UserService{
 			}
 			return null;
 	}
-
 	
-	
+	public Utilisateur loadUserByUsername(String pLogin)
+	{
+		Utilisateur lUser = null;
+		lUser = userDao.getUserByLogin(pLogin);
+		userDao.update(lUser);
+		return lUser;
+	}
 	
 
 }
