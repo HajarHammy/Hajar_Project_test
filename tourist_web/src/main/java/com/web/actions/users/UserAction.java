@@ -36,19 +36,20 @@ public class UserAction extends BaseAction {
 	private File upload;
 
 
-	@Action(value = "/addDestination", results = { @Result(name = "success", location = "/private/user/addDestinationForm.jsp") })
-	public String addDestination() {
-
+//	@Action(value = "/addDestination", results = { @Result(name = "success", location = "/private/user/addDestinationForm.jsp") })
+//	public String addDestination() {
+//
+//	
+//		return SUCCESS;
+//
+//	}
+	@Action(value = "/addFileUpload", results = { @Result(name = "success", location = "/private/user/addDestinationForm.jsp") })
+	public String addFileUpload() 
+	{
 		destinationService.addDestination(destination);
 
 		addActionMessage("Destination correctement ajoutée");
 
-		return SUCCESS;
-
-	}
-	@Action(value = "/addFileUpload", results = { @Result(name = "success", location = "/private/user/addDestinationForm.jsp") })
-	public String addFileUpload() 
-	{
 		FileInputStream fis;
 		FileOutputStream fos;
 		try {
@@ -60,7 +61,6 @@ public class UserAction extends BaseAction {
 			System.out.println(contentType);
 		   
 			String path= "C:\\Users\\Hajar\\git\\Hajar_Project_test1\\tourist_web"+"/src/main/webapp/img"+getUploadsFileName().toString()+".jpg";
-		   
 			fos=new FileOutputStream(path);
 		   
 			byte[] b =new byte[1024];
@@ -81,6 +81,7 @@ public class UserAction extends BaseAction {
 		return SUCCESS;
 	   
    }
+	
 
 	@Actions({
 	@Action(value = "/", results = { @Result(name = "success", location = "/private/user/listDestinations.jsp") }),
