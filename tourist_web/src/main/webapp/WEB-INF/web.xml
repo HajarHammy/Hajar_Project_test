@@ -5,9 +5,9 @@
 	id="WebApp_ID" version="3.1">
 	<display-name>ex</display-name>
 	
-	<welcome-file-list>
+	<!-- <welcome-file-list>
 		<welcome-file> /public/Login.jsp </welcome-file>
-	</welcome-file-list>
+	</welcome-file-list> -->
 	
 	 <context-param>
     <param-name>contextConfigLocation</param-name>
